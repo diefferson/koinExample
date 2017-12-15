@@ -7,6 +7,4 @@ import android.arch.persistence.room.RoomDatabase
  */
 //@Database(entities = arrayOf(), version = 1)
 abstract class AppDB : RoomDatabase() {
-
-
 }

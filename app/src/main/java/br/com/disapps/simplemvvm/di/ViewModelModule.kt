@@ -1,29 +1,19 @@
 package br.com.disapps.simplemvvm.di
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import br.com.disapps.simplemvvm.MainViewModel
 import br.com.disapps.simplemvvm.ui.home.HomeViewModel
 import br.com.disapps.simplemvvm.ui.login.LoginViewModel
-import dagger.Binds
-import dagger.Module
-import dagger.multibindings.IntoMap
+import org.koin.android.module.AndroidModule
 
 /**
- * Created by diefferson on 28/11/2017.
+ * Created by dnso on 15/12/2017.
  */
-@Module
-abstract class ViewModelModule{
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
+class ViewModelModule : AndroidModule(){
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(LoginViewModel::class)
-    abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
-
-    @Binds
-    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    override fun context() = applicationContext {
+        provide { HomeViewModel() }
+        provide { LoginViewModel() }
+        provide { MainViewModel() }
+    }
 }

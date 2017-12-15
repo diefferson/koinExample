@@ -7,23 +7,25 @@ import br.com.disapps.simplemvvm.api.IRestApi
 import br.com.disapps.simplemvvm.app.App
 import br.com.disapps.simplemvvm.db.AppDB
 import br.com.disapps.simplemvvm.util.LiveDataCallAdapterFactory
-import dagger.Module
-import dagger.Provides
+import org.koin.android.module.AndroidModule
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
+
 
 /**
- * Created by diefferson on 28/11/2017.
+ * Created by diefferson santos on 15/12/2017.
  */
-@Module
-class AppModule {
+class  AppModule : AndroidModule(){
 
-    @Provides
+    override fun context() = applicationContext{
+        provide { provideApp() }
+        provide { provideIRestApi() }
+        provide { provideDb(get()) }
+        provide { InjectionTest() }
+    }
+
     fun provideApp(): App = App.instance!!
 
-    @Singleton
-    @Provides
     fun provideIRestApi(): IRestApi {
         return Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST)
@@ -33,8 +35,6 @@ class AppModule {
                 .create(IRestApi::class.java)
     }
 
-    @Singleton
-    @Provides
     fun provideDb(app: Application): AppDB =
             Room.databaseBuilder(app, AppDB::class.java, "vivamais.db").build()
 

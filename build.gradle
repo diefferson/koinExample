@@ -23,6 +23,7 @@ task clean(type: Delete) {
 
 ext{
     dagger_version = "2.11"
+    koin_version = "0.6.1"
     arch_version = "1.0.0"
     rxJavaVersion = '2.1.0'
     rxAndroidVersion = '2.0.1'

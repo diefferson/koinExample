@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 class MainActivity : BaseFragmentActivity<MainViewModel>(), NavigationView.OnNavigationItemSelectedListener {
 
     override val mViewModel: MainViewModel
-        get() = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
+        get() = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
     override val activityTag: String
         get() = MainActivity::class.java.simpleName

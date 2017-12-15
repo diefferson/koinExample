@@ -8,20 +8,11 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.FrameLayout
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
 
 /**
  * Created by diefferson on 29/11/2017.
  */
-abstract class BaseFragmentActivity<V : ViewModel> : AppCompatActivity(), IBaseFragmentActivityListener, HasSupportFragmentInjector {
-
-    @Inject
-    protected lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+abstract class BaseFragmentActivity<V : ViewModel> : AppCompatActivity(), IBaseFragmentActivityListener {
 
     abstract val mViewModel: V
     abstract val activityTag: String
@@ -75,6 +66,4 @@ abstract class BaseFragmentActivity<V : ViewModel> : AppCompatActivity(), IBaseF
 
     }
 
-    override fun supportFragmentInjector(): DispatchingAndroidInjector<Fragment> =
-            dispatchingAndroidInjector
 }
