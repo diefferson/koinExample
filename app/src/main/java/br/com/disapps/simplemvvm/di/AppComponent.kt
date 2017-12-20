@@ -7,6 +7,6 @@ import org.koin.android.module.AndroidModule
  */
 object AppComponent{
     fun modules() : List<AndroidModule> {
-        return  listOf(AppModule(), ActivityModule(), FragmentModule(), ViewModelModule())
+        return  listOf(AppModule(), ViewModelModule())
     }
 }
