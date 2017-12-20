@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.FrameLayout
+import br.com.disapps.simplemvvm.di.ViewModelFactory
+import org.koin.android.ext.android.inject
 
 /**
  * Created by diefferson on 29/11/2017.
@@ -21,6 +23,8 @@ abstract class BaseFragmentActivity<V : ViewModel> : AppCompatActivity(), IBaseF
     abstract val container: FrameLayout
     abstract val toolbar : Toolbar
     abstract val initialFragment : BaseFragment<*>
+
+    val viewModelFactory by inject<ViewModelFactory>()
 
     private val fragmentTransaction: FragmentTransaction
         get() = supportFragmentManager.beginTransaction()

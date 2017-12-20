@@ -21,7 +21,6 @@ class  AppModule : AndroidModule(){
         provide { provideApp() }
         provide { provideIRestApi() }
         provide { provideDb(get()) }
-        provide { InjectionTest() }
     }
 
     fun provideApp(): App = App.instance!!

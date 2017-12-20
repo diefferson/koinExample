@@ -1,4 +1,4 @@
-package br.com.disapps.simplemvvm
+package br.com.disapps.simplemvvm.ui.main
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.FrameLayout
 import br.com.disapps.homepet.util.extensions.startActivity
+import br.com.disapps.simplemvvm.R
 import br.com.disapps.simplemvvm.ui.common.BaseFragment
 import br.com.disapps.simplemvvm.ui.common.BaseFragmentActivity
 import br.com.disapps.simplemvvm.ui.home.HomeFragment
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 class MainActivity : BaseFragmentActivity<MainViewModel>(), NavigationView.OnNavigationItemSelectedListener {
 
     override val mViewModel: MainViewModel
-        get() = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        get() = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
     override val activityTag: String
         get() = MainActivity::class.java.simpleName

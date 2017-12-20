@@ -8,7 +8,7 @@ import br.com.disapps.simplemvvm.ui.common.BaseActivity
 class LoginActivity : BaseActivity<LoginViewModel>() {
 
     override val mViewModel: LoginViewModel
-        get() = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        get() = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
 
     override val activityTag: String
         get() = LoginActivity::class.java.simpleName
