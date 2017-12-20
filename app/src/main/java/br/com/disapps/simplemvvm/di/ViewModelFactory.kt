@@ -7,8 +7,7 @@ import android.arch.lifecycle.ViewModelProvider
  * Created by diefferson on 20/12/2017.
  */
 class ViewModelFactory constructor(
-        private val creators: Map<Class<out ViewModel>,
-               out ViewModel>
+        private val creators: Map<Class<out ViewModel>,ViewModel>
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
