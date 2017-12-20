@@ -14,16 +14,15 @@ import org.koin.dsl.module.applicationContext
  */
 object ViewModelModule{
 
-    val viewModelModule = applicationContext {
+    val module = applicationContext {
         provide { provideViewModels(get(), get()) }
         provide { ViewModelFactory(get()) }
     }
 
-    private fun provideViewModels(iRestApi: IRestApi, appDB: AppDB): Map<Class<out ViewModel>, ViewModel> {
-       return mapOf(
-               HomeViewModel::class.java to HomeViewModel(iRestApi),
-               LoginViewModel::class.java to LoginViewModel(),
-               MainViewModel::class.java to MainViewModel()
-       )
-    }
+    private fun provideViewModels(iRestApi: IRestApi, appDB: AppDB) = mapOf(
+            HomeViewModel::class.java to HomeViewModel(iRestApi),
+            LoginViewModel::class.java to LoginViewModel(),
+            MainViewModel::class.java to MainViewModel()
+    )
+
 }

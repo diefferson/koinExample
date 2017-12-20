@@ -7,7 +7,7 @@ import org.koin.dsl.module.Module
  */
 object AppComponent{
     fun modules() : List<Module> = listOf(
-            AppModule.appModule,
-            ViewModelModule.viewModelModule
+            AppModule.module,
+            ViewModelModule.module
     )
 }

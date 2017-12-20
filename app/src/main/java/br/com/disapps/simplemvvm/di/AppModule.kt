@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object  AppModule {
 
-    val appModule : Module = applicationContext {
+    val module: Module = applicationContext {
         provide { provideApp() }
         provide { provideIRestApi() }
         provide { provideDb(get()) }
