@@ -1,4 +1,4 @@
-package br.com.disapps.simplemvvm.di
+package br.com.disapps.simplemvvm.util
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
@@ -28,6 +28,5 @@ class ViewModelFactory constructor(
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
-
     }
 }

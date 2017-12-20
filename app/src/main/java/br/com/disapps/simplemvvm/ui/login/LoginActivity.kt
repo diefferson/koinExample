@@ -19,8 +19,4 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
     override val activityLayout: Int
         get() = R.layout.activity_login
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 }

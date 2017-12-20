@@ -14,6 +14,4 @@ interface IBaseFragmentActivityListener {
     fun replaceFragment(fragment: Fragment)
 
     fun replaceAndBackStackFragment(fragment: Fragment)
-
-    //fun replaceAndBackStackFragment(fragment: Fragment, animated: Boolean)
 }

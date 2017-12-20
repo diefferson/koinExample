@@ -3,7 +3,7 @@ package br.com.disapps.simplemvvm.ui.common
 import android.arch.lifecycle.ViewModel
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import br.com.disapps.simplemvvm.di.ViewModelFactory
+import br.com.disapps.simplemvvm.util.ViewModelFactory
 import org.koin.android.ext.android.inject
 
 /**
@@ -16,13 +16,10 @@ abstract class BaseActivity<out V: ViewModel> : AppCompatActivity() {
     abstract val activityName: String
     abstract val activityLayout: Int
 
-    val viewModelFactory by inject<ViewModelFactory>()
+    val viewModelFactory: ViewModelFactory by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activityLayout)
     }
-
-
-
 }

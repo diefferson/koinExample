@@ -1,13 +1,12 @@
 package br.com.disapps.simplemvvm.ui.common
 
 import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.disapps.simplemvvm.di.ViewModelFactory
+import br.com.disapps.simplemvvm.util.ViewModelFactory
 import org.koin.android.ext.android.inject
 
 /**
@@ -19,7 +18,8 @@ abstract class BaseFragment<out V: ViewModel> : Fragment() {
     abstract val fragmentTag: String
     abstract val fragmentName: String
     abstract val fragmentLayout: Int
-    val viewModelFactory by inject<ViewModelFactory>()
+
+    val viewModelFactory : ViewModelFactory by inject()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater!!.inflate(fragmentLayout, container, false)
