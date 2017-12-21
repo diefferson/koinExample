@@ -1,5 +1,6 @@
 package br.com.disapps.simplemvvm.ui.home
 
+import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
@@ -12,14 +13,14 @@ import org.koin.android.ext.android.inject
  * Created by diefferson on 29/11/2017.
  */
 
-class HomeFragment : BaseFragment<HomeViewModel>(){
+class HomeFragment : BaseFragment(){
 
     companion object {
         fun newInstance() = HomeFragment()
     }
 
-    override val mViewModel: HomeViewModel
-        get() =  ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
+    override val viewModelClass: Class<out ViewModel>
+        get() = HomeViewModel::class.java
 
     override val fragmentTag: String
         get() = HomeFragment::class.java.simpleName

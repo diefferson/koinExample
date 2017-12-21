@@ -1,6 +1,7 @@
 package br.com.disapps.simplemvvm.ui.common
 
 import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
@@ -13,17 +14,19 @@ import org.koin.android.ext.android.inject
 /**
  * Created by diefferson on 29/11/2017.
  */
-abstract class BaseFragmentActivity<out V : ViewModel> : AppCompatActivity(), IBaseFragmentActivityListener {
+abstract class BaseFragmentActivity : AppCompatActivity(), IBaseFragmentActivityListener {
 
-    abstract val mViewModel: V
+    abstract val viewModelClass: Class<out ViewModel>
     abstract val activityTag: String
     abstract val activityName: String
     abstract val activityLayout: Int
     abstract val container: FrameLayout
     abstract val toolbar : Toolbar
-    abstract val initialFragment : BaseFragment<*>
+    abstract val initialFragment : BaseFragment
 
-    val viewModelFactory : ViewModelFactory  by inject()
+    private val viewModelFactory : ViewModelFactory  by inject()
+
+    val mViewModel: ViewModel by lazy { ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)}
 
     private val fragmentTransaction: FragmentTransaction
         get() = supportFragmentManager.beginTransaction()
@@ -45,7 +48,7 @@ abstract class BaseFragmentActivity<out V : ViewModel> : AppCompatActivity(), IB
 
     override fun replaceFragment(fragment: Fragment) {
         val ft = fragmentTransaction
-        if (fragment is BaseFragment<*>) {
+        if (fragment is BaseFragment) {
             ft.replace(container.id, fragment, fragment.fragmentTag)
         } else {
             ft.replace(container.id, fragment, fragment.javaClass.simpleName)
@@ -57,7 +60,7 @@ abstract class BaseFragmentActivity<out V : ViewModel> : AppCompatActivity(), IB
     override fun replaceAndBackStackFragment(fragment: Fragment) {
         val ft = fragmentTransaction
 
-        if (fragment is BaseFragment<*>) {
+        if (fragment is BaseFragment) {
             ft.replace(container.id, fragment, fragment.fragmentTag)
             ft.addToBackStack(fragment.fragmentTag)
         } else {
