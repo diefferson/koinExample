@@ -15,15 +15,14 @@ import br.com.disapps.simplemvvm.R
 import br.com.disapps.simplemvvm.ui.common.BaseFragment
 import br.com.disapps.simplemvvm.ui.common.BaseFragmentActivity
 import br.com.disapps.simplemvvm.ui.home.HomeFragment
+import br.com.disapps.simplemvvm.ui.home.HomeViewModel
 import br.com.disapps.simplemvvm.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.include_container.*
 import kotlinx.android.synthetic.main.include_toolbar.*
+import org.koin.android.architecture.ext.getViewModel
 
 class MainActivity : BaseFragmentActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    override val viewModelClass: Class<out ViewModel>
-        get() = MainViewModel::class.java
 
     override val activityTag: String
         get() = MainActivity::class.java.simpleName
@@ -45,6 +44,7 @@ class MainActivity : BaseFragmentActivity(), NavigationView.OnNavigationItemSele
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = getViewModel<MainViewModel>()
         setupDrawer()
     }
 

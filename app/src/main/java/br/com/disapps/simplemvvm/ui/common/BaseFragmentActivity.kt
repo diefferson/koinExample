@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.FrameLayout
-import br.com.disapps.simplemvvm.util.ViewModelFactory
 import org.koin.android.ext.android.inject
 
 /**
@@ -16,17 +15,12 @@ import org.koin.android.ext.android.inject
  */
 abstract class BaseFragmentActivity : AppCompatActivity(), IBaseFragmentActivityListener {
 
-    abstract val viewModelClass: Class<out ViewModel>
     abstract val activityTag: String
     abstract val activityName: String
     abstract val activityLayout: Int
     abstract val container: FrameLayout
     abstract val toolbar : Toolbar
     abstract val initialFragment : BaseFragment
-
-    private val viewModelFactory : ViewModelFactory  by inject()
-
-    val mViewModel: ViewModel by lazy { ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)}
 
     private val fragmentTransaction: FragmentTransaction
         get() = supportFragmentManager.beginTransaction()

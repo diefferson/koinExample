@@ -35,12 +35,12 @@ android {
         dev {
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
-            buildConfigField 'String', 'HOST', '"teste"'
+            buildConfigField 'String', 'HOST', '"http://api.teste.com"'
         }
         prod {
             applicationIdSuffix ".prod"
             versionNameSuffix "-prod"
-            buildConfigField 'String', 'HOST', '"teste"'
+            buildConfigField 'String', 'HOST', '"http://api.teste.com"'
         }
     }
 }
@@ -71,6 +71,7 @@ dependencies {
 
     //koin
     implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-architecture:$koin_version"
 
     // Rx
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"

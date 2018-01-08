@@ -1,13 +1,9 @@
 package br.com.disapps.simplemvvm.ui.home
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.View
-import br.com.disapps.homepet.util.extensions.toast
 import br.com.disapps.simplemvvm.R
 import br.com.disapps.simplemvvm.ui.common.BaseFragment
-import org.koin.android.ext.android.inject
+import org.koin.android.architecture.ext.getViewModel
 
 /**
  * Created by diefferson on 29/11/2017.
@@ -18,10 +14,6 @@ class HomeFragment : BaseFragment(){
     companion object {
         fun newInstance() = HomeFragment()
     }
-
-    override val viewModelClass: Class<out ViewModel>
-        get() = HomeViewModel::class.java
-
     override val fragmentTag: String
         get() = HomeFragment::class.java.simpleName
 
@@ -30,5 +22,10 @@ class HomeFragment : BaseFragment(){
 
     override val fragmentLayout: Int
         get() = R.layout.fragment_home
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val viewModel = getViewModel<HomeViewModel>()
+    }
 
 }

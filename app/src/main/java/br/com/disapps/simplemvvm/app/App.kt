@@ -2,7 +2,6 @@ package br.com.disapps.simplemvvm.app
 
 import android.app.Application
 import android.support.v7.app.AppCompatDelegate
-import br.com.disapps.simplemvvm.di.AppComponent
 import org.koin.android.ext.android.startKoin
 
 
@@ -18,7 +17,7 @@ class App : Application() {
 
         instance = this
 
-        startKoin(this, AppComponent.modules())
+        startKoin(this, AppInject.modules())
     }
 
     companion object {
